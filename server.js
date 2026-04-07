@@ -12,7 +12,11 @@ app.post("/chat", async (req, res) => {
      //  model: "llama3",
      model: "mistral",
       prompt: message,
-      stream: false
+      stream: false,
+        options: {
+          num_predict: 60,   // limit output
+          temperature: 0.7
+          }
     });
 
     res.json({ reply: response.data.response });
